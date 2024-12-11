@@ -1,0 +1,28 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string s) {
+    int answer = 0;
+    int nStt = 0;
+    int nFin = 0;
+    int prenum = 0;
+    string str="";
+    s += " ";
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] == ' '){
+            nFin = i;
+            str = s.substr(nStt, nFin-nStt);
+            if(str == "Z"){
+                answer -= prenum;
+            }
+            else{
+                prenum = stoi(str);
+                answer += prenum;
+            }
+            nStt = i + 1;
+        }
+    }
+    return answer;
+}

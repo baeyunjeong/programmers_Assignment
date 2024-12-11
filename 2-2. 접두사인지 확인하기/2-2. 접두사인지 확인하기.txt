@@ -1,0 +1,20 @@
+#include <string>
+
+using namespace std;
+
+int solution(string my_string, string is_prefix) {
+    int answer = 1;
+    int strlen = my_string.length();
+    int prelen = is_prefix.length();
+    if(prelen > strlen){
+        answer = 0;
+    }else{
+        for (int i = 0; i < prelen; i++){
+            if(my_string[i] != is_prefix[i]){
+                answer = 0;
+                break;
+            }
+        }
+    }
+    return answer;
+}

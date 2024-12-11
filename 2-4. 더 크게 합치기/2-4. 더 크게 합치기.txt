@@ -1,0 +1,30 @@
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int digit(int num)
+{
+    int i;
+    for(i = 4; i >= 0; i--){
+        if(num/int(pow(10, i)) > 0) break;
+    }
+    return i+1;
+}
+int attach(int num1, int num2, int dgt2)
+{
+    int result = num1*pow(10, dgt2) + num2;
+    return result;
+}
+
+int solution(int a, int b) {
+    int answer = 0;
+    int a_dgt = digit(a);
+    int b_dgt = digit(b);
+    int ab = attach(a, b, b_dgt);
+    int ba = attach(b, a, a_dgt);
+    answer = (ab<ba)?ba:ab;
+    
+    return answer;
+}
